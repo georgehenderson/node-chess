@@ -257,3 +257,44 @@ module.exports.testAlgebraicGameClient_DefectFix_SpontaneousPawn = function() {
 
 	assert.ok(s.piece === null, 'Phantom piece appears after Bxc6');
 };
+
+// Feature - Skip move
+module.exports.testAlgebraicGameClient_Feature_SkipMove = function() {
+	var gc = algebraicGameClient.create(),
+		m = null,
+		s = null;
+
+	// turn 1
+	gc.move('e4');
+	gc.move('e5');
+
+	// turn 2
+	m = gc.skip();
+
+	assert.ok(m !== null, 'Move is null after skip');
+
+	s = gc.getStatus();
+	
+	assert.ok(gc.game.moveHistory.length === 3, 'Skip did not apply a move history item');
+
+	// ensure black player is able to move
+	assert.ok(gc.game.getCurrentSide() === piece.SideType.Black, 'Current side is not black');
+	assert.ok(s.notatedMoves[
+		Object.keys(s.notatedMoves)[0]].src.piece.side === 
+		piece.SideType.Black, 'Black is not able to move');
+
+	/*
+	assert.strictEqual(s.isCheck, false);
+	assert.strictEqual(s.isCheckmate, false);
+	assert.strictEqual(s.isRepetition, false);
+	assert.strictEqual(s.isStalemate, false);
+	assert.strictEqual(Object.keys(s.notatedMoves).length, 29);
+
+	console.log(s.notatedMoves);
+
+	// finish turn 2
+	m = gc.move('f5');
+	s = gc.getStatus();
+	*/
+
+};
