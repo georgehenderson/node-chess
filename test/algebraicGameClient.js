@@ -284,21 +284,6 @@ describe('AlgebraicGameClient', function() {
 		assert.ok(s.notatedMoves[
 			Object.keys(s.notatedMoves)[0]].src.piece.side === 
 			piece.SideType.Black, 'Black is not able to move');
-
-		/*
-		assert.strictEqual(s.isCheck, false);
-		assert.strictEqual(s.isCheckmate, false);
-		assert.strictEqual(s.isRepetition, false);
-		assert.strictEqual(s.isStalemate, false);
-		assert.strictEqual(Object.keys(s.notatedMoves).length, 29);
-
-		console.log(s.notatedMoves);
-
-		// finish turn 2
-		m = gc.move('f5');
-		s = gc.getStatus();
-		*/
-
 	});
 
 });
