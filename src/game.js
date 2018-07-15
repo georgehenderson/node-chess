@@ -9,7 +9,7 @@
 import { Board } from './board';
 import { EventEmitter } from 'events';
 import { SideType } from './piece';
-import crypto from 'crypto';
+import crypt from 'crypto';
 
 function addToHistory (game) {
 	return function (ev) {
@@ -67,7 +67,7 @@ export class Game extends EventEmitter {
 	getHashCode () {
 		let
 			i = 0,
-			sum = crypto.createHash('md5');
+			sum = crypt.createHash('md5');
 
 		for (i = 0; i < this.board.squares.length; i++) {
 			if (this.board.squares[i].piece !== null) {
