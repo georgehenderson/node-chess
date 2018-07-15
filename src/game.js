@@ -9,7 +9,7 @@
 import { Board } from './board';
 import { EventEmitter } from 'events';
 import { SideType } from './piece';
-import crypt from 'crypto';
+import crypt from 'webcrypto';
 
 function addToHistory (game) {
 	return function (ev) {
