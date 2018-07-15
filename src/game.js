@@ -10,11 +10,11 @@ import { Board } from './board';
 import { EventEmitter } from 'events';
 import { SideType } from './piece';
 import crypt from 'webcrypto';
-
+let historyIndex = 0;
 function addToHistory (game) {
 	return function (ev) {
 		let
-			hashCode = game.getHashCode(),
+			hashCode = historyIndex++,
 			move = new Move(
 				ev.prevSquare,
 				ev.postSquare,
